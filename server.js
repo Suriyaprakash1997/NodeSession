@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require("dotenv");
 const app = express();
 const userRoute = require('./routers/user-router')
+const employeeRoute = require('./routers/employee-router')
 
 dotenv.config();
 app.use(express.json());
@@ -16,7 +17,8 @@ mongoose.connect('mongodb://127.0.0.1:27017/Payroll')
 app.get("/",(req,res)=>{
      return res.json( "welcome" );
 })
-app.use('/api/user',userRoute)
+app.use('/api/user', userRoute)
+app.use('/api/employee', employeeRoute)
 
 const PORT = 8085;
 app.listen(PORT, () => {
